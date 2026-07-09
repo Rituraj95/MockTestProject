@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guwahati University B.Ed 2026 — Mock Test 4</title>
+<style>
+  :root{
+    --ink:#1b2a2a;
+    --paper:#f6f3ec;
+    --teal:#0f3d3e;
+    --teal-deep:#0a2c2d;
+    --muga:#b08d57;
+    --muga-light:#e8d9bd;
+    --correct:#2f6f4e;
+    --wrong:#a13d3d;
+    --card:#ffffff;
+    --line:#dcd4c2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height:1.5;
+  }
+  .header{
+    background:linear-gradient(135deg,var(--teal) 0%,var(--teal-deep) 100%);
+    color:var(--muga-light);
+    padding:36px 24px 30px;
+    text-align:center;
+    border-bottom:6px solid var(--muga);
+    position:relative;
+    overflow:hidden;
+  }
+  .header::before{
+    content:"";
+    position:absolute;
+    top:-40px; right:-40px;
+    width:180px; height:180px;
+    border-radius:50%;
+    background:rgba(232,217,189,0.08);
+  }
+  .eyebrow{
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--muga);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  h1{
+    font-family:Georgia,'Noto Serif',serif;
+    font-size:clamp(22px,4vw,34px);
+    margin:0 0 6px;
+    color:#fdfbf6;
+    letter-spacing:0.3px;
+  }
+  .subtitle{
+    font-size:14px;
+    color:var(--muga-light);
+    opacity:0.85;
+  }
+  .note-banner{
+    max-width:820px;
+    margin:14px auto 0;
+    background:#fff7e8;
+    border:1px solid var(--muga);
+    color:#5a4620;
+    font-size:12.5px;
+    padding:8px 16px;
+    border-radius:8px;
+    text-align:center;
+  }
+  .container{
+    max-width:820px;
+    margin:0 auto;
+    padding:24px 18px 80px;
+  }
+  .infobar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px 18px;
+    margin:14px 0 22px;
+    box-shadow:0 4px 14px rgba(15,61,62,0.08);
+    position:sticky;
+    top:10px;
+    z-index:20;
+  }
+  .name-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    min-width:170px;
+  }
+  .name-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#7a8a8a;
+    font-weight:600;
+  }
+  .name-input{
+    font-family:inherit;
+    font-size:14px;
+    padding:7px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:#faf7f0;
+    color:var(--ink);
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .name-input:focus{
+    border-color:var(--teal);
+  }
+  .result-name{
+    font-family:Georgia,'Noto Serif',serif;
+    font-size:15px;
+    color:var(--teal-deep);
+    margin-bottom:6px;
+    letter-spacing:0.3px;
+  }
+  .progress-wrap{
+    flex:1;
+    min-width:160px;
+  }
+  .progress-track{
+    background:var(--muga-light);
+    border-radius:6px;
+    height:8px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    background:var(--teal);
+    height:100%;
+    width:0%;
+    transition:width .25s ease;
+  }
+  .progress-label{
+    font-size:12px;
+    color:#5a6b6b;
+    margin-top:4px;
+  }
+  .timer{
+    font-variant-numeric:tabular-nums;
+    font-weight:700;
+    color:var(--teal-deep);
+    font-size:15px;
+    background:var(--muga-light);
+    padding:6px 12px;
+    border-radius:8px;
+  }
+  .passage-box{
+    background:var(--muga-light);
+    border-left:4px solid var(--muga);
+    padding:16px 18px;
+    border-radius:6px;
+    font-size:14px;
+    margin-bottom:14px;
+    color:#3a3226;
+  }
+  .qcard{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 18px 14px;
+    margin-bottom:14px;
+    transition:box-shadow .2s ease, border-color .2s ease;
+  }
+  .qcard:hover{
+    box-shadow:0 3px 12px rgba(15,61,62,0.07);
+  }
+  .qnum{
+    font-family:Georgia,'Noto Serif',serif;
+    color:var(--muga);
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:6px;
+  }
+  .qtext{
+    font-size:15.5px;
+    font-weight:600;
+    margin-bottom:12px;
+    color:var(--ink);
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:9px 12px;
+    border:1px solid var(--line);
+    border-radius:7px;
+    cursor:pointer;
+    font-size:14.5px;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .option:hover{
+    background:#faf7f0;
+    border-color:var(--muga);
+  }
+  .option input{
+    margin-top:3px;
+    accent-color:var(--teal);
+  }
+  .option.selected{
+    background:#eef4ef;
+    border-color:var(--teal);
+  }
+  .option.correct-answer{
+    background:#e7f3ea;
+    border-color:var(--correct);
+    color:#204a34;
+  }
+  .option.wrong-answer{
+    background:#fbeaea;
+    border-color:var(--wrong);
+    color:#6b2323;
+  }
+  .badge{
+    margin-left:auto;
+    font-size:11px;
+    font-weight:700;
+    padding:2px 8px;
+    border-radius:12px;
+  }
+  .badge.correct{background:var(--correct);color:#fff;}
+  .badge.wrong{background:var(--wrong);color:#fff;}
+
+  .submit-bar{
+    position:sticky;
+    bottom:0;
+    background:linear-gradient(to top, var(--paper) 70%, transparent);
+    padding:20px 0 10px;
+    text-align:center;
+  }
+  button{
+    font-family:inherit;
+    font-size:16px;
+    font-weight:700;
+    padding:14px 34px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    background:var(--teal);
+    color:#fdfbf6;
+    box-shadow:0 6px 16px rgba(15,61,62,0.25);
+    transition:transform .15s ease, background .15s ease;
+  }
+  button:hover{transform:translateY(-1px);background:var(--teal-deep);}
+  button:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+  .results-panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 24px;
+    margin:26px 0;
+    text-align:center;
+    box-shadow:0 6px 20px rgba(15,61,62,0.1);
+  }
+  .score-ring{
+    width:140px;height:140px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:conic-gradient(var(--teal) calc(var(--pct)*1%), var(--muga-light) 0);
+  }
+  .score-inner{
+    width:110px;height:110px;
+    border-radius:50%;
+    background:var(--card);
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+  }
+  .score-inner .num{font-size:26px;font-weight:800;color:var(--teal-deep);font-family:Georgia,serif;}
+  .score-inner .den{font-size:12px;color:#7a8a8a;}
+  .verdict{font-size:18px;font-weight:700;color:var(--teal-deep);margin-bottom:4px;}
+  .verdict-sub{font-size:13.5px;color:#5a6b6b;margin-bottom:16px;}
+  .stat-row{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:10px;}
+  .stat{text-align:center;}
+  .stat .n{font-size:20px;font-weight:800;font-family:Georgia,serif;}
+  .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#7a8a8a;}
+  .stat.correct .n{color:var(--correct);}
+  .stat.wrong .n{color:var(--wrong);}
+  .stat.skipped .n{color:#a08a4a;}
+  .jump-note{font-size:13px;color:#5a6b6b;margin-top:16px;}
+  .unanswered-flag{
+    font-size:11px;color:var(--wrong);font-weight:700;margin-top:6px;
+  }
+  @media (max-width:520px){
+    .infobar{margin:10px 0 18px;}
+    .qcard{padding:14px 14px 10px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">B.Ed Entrance Preparation</div>
+  <h1>Guwahati University B.Ed 2026</h1>
+  <div class="subtitle">Mock Test 7 · 100 Questions ·An initiative from Team  Xohai</div>
+  <div>Instragram - @_xohai_</div>
+  <div class="back-btn-container">
+        <button onclick="history.back()" class="back-btn">
+            ← Back
+        </button>
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="infobar">
+    <div class="name-wrap">
+      <label for="studentName" class="name-label">Student Name</label>
+      <input type="text" id="studentName" class="name-input" placeholder="Enter your name">
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 of 100 answered</div>
+    </div>
+    <div class="timer" id="timer">02:00:00</div>
+  </div>
+
+  <div id="resultsMount"></div>
+  <div id="quizMount"></div>
+
+  <div class="submit-bar">
+    <button id="submitBtn">Submit Test &amp; See Score</button>
+  </div>
+</div>
+
+<script>
+// ---------- DATA ----------
+const sections = [
+  { start: 0, count: 15 },   // Education Policy & Schemes
+  { start: 15, count: 9 },   // General Science & Assam GK
+  { start: 24, count: 4 },   // Budget & Current Affairs 2026
+  { start: 28, count: 17 },  // Polity & History
+  { start: 45, count: 15 },  // English Language (Part 1)
+  { start: 60, count: 5, passageText: "Education is not limited to acquiring academic knowledge; it also plays an important role in developing values, discipline, and responsible citizenship. A good education system encourages students to think independently, solve problems creatively, and respect different opinions. Teachers guide learners not only through textbooks but also by setting positive examples through their behaviour and attitude. In recent years, digital technology has transformed education by making learning materials available online. Students can now access lectures, e-books, and educational videos from anywhere. However, excessive dependence on technology may reduce face-to-face interaction and affect communication skills. Therefore, an ideal education system should maintain a balance between digital learning and classroom teaching to ensure the overall development of students." }, // Reading Comprehension
+  { start: 65, count: 5 },   // English Language (Part 2)
+  { start: 70, count: 5 },   // Reasoning (Part 1)
+  { start: 75, count: 1, passageText: "Study the following coded information:\n\"book is useful\" is written as \"ka mi lo\"\n\"pen is blue\" is written as \"ta mi re\"\n\"book and pen\" is written as \"ka ta su\"" }, // Coded Language
+  { start: 76, count: 4 },   // Reasoning (Part 2)
+  { start: 80, count: 10 },  // Quantitative Aptitude
+  { start: 90, count: 10 }   // Teaching Ethics & Aptitude
+];
+
+const Q = [
+// 1-15 Education Policy & Schemes
+["The Right to Education became a Fundamental Right under which Constitutional Amendment?", ["84th Amendment","85th Amendment","86th Amendment","91st Amendment"], 2],
+["According to NEP 2020, the medium of instruction should preferably be the:", ["English language","Hindi language","Sanskrit language","Mother tongue/Regional language up to at least Grade 5 (preferably Grade 8)"], 3],
+["Which scheme integrated SSA, RMSA, and Teacher Education (TE) into a single programme?", ["PM SHRI","NIPUN Bharat","Mid-Day Meal Scheme","Samagra Shiksha"], 3],
+["Which National Curriculum Framework emphasized constructivist and child-centred learning?", ["NCF 1988","NCF 2000","NCF 2005","NCF 2023"], 2],
+["Which scheme was launched to achieve Universalisation of Elementary Education?", ["RMSA","PM SHRI","Sarva Shiksha Abhiyan (SSA)","RUSA"], 2],
+["Operation Blackboard was launched to improve:", ["Higher Education","Technical Education","Primary Education Infrastructure","Distance Education"], 2],
+["What is the full form of SCERT?", ["State Council of Educational Research and Technology","State Committee of Education and Research Training","State Council of Educational Research and Training","State Council of Education and Teacher Training"], 2],
+["The Right to Education (RTE) Act, 2009 aims to:", ["Promote higher education","Provide free and compulsory education to children aged 6–14 years","Improve university infrastructure","Increase teacher salaries"], 1],
+["What is the primary goal of Kasturba Gandhi Balika Vidyalaya (KGBV)?", ["Improve technical education","Provide residential schooling for girls from disadvantaged groups","Promote sports education","Train teachers only"], 1],
+["Which of the following is prohibited under the RTE Act?", ["Continuous assessment","School Management Committee","Physical punishment and mental harassment","Mid-Day Meal Scheme"], 2],
+["What is the primary function of DIET?", ["Conduct competitive examinations","Provide pre-service and in-service training to elementary school teachers","Manage universities","Publish textbooks"], 1],
+["The concept of \"Inclusive Education\" refers to:", ["Education for all, including children with disabilities","Education only for gifted children","Education for rural children","Education for urban children"], 0],
+["Which of the following is an example of an ICT tool used in education?", ["Blackboard only","Chalk only","Computer and Internet","Attendance Register"], 2],
+["DIKSHA was launched by:", ["UGC","AICTE","Ministry of Education (formerly MHRD)","NITI Aayog"], 2],
+["What is the purpose of the ASER survey in India?", ["To assess the learning outcomes of children","To evaluate teacher performance","To monitor school infrastructure","To conduct teacher training"], 0],
+// 16-25 General Science & Assam GK
+["Which of the following is NOT a noble gas?", ["Helium","Neon","Carbon","Argon"], 2],
+["Which gland controls blood pressure?", ["Thyroid gland","Pituitary gland","Adrenal gland","Pancreas"], 2],
+["Which instrument is used to measure wind speed?", ["Barometer","Hygrometer","Anemometer","Thermometer"], 2],
+["Deficiency of Vitamin B1 causes:", ["Pellagra","Beriberi","Scurvy","Rickets"], 1],
+["Which of the following is a man-made element?", ["Uranium","Plutonium","Californium","Radium"], 2],
+["The term \"Ecosystem\" was coined by:", ["Charles Darwin","Ernst Haeckel","Arthur Tansley","Gregor Mendel"], 2],
+["Beyond what distance can a normal eye see clearly without strain?", ["10 cm","15 cm","25 cm","50 cm"], 2],
+["What is the total length of the Kumar Bhaskar Varma Setu inaugurated recently?", ["1.50 km","1.24 km","2.10 km","0.98 km"], 1],
+["What is the main objective of the Mukhya Mantrir Nijut Babu Asoni scheme?", ["Provide free textbooks","Increase digital education","Prevent student dropouts","Improve teacher training"], 2],
+// 25-28 Budget & Current Affairs 2026
+["The fiscal deficit for FY 2026–27 (BE) is estimated at:", ["4.0% of GDP","5.0% of GDP","4.3% of GDP","3.8% of GDP"], 2],
+["The debt-to-GDP ratio estimated in Budget 2026–27 is:", ["52.4%","55.6%","57.8%","60.1%"], 1],
+["Total expenditure (BE) in Budget 2026–27 is estimated at:", ["₹50.5 lakh crore","₹51.8 lakh crore","₹53.5 lakh crore","₹55.2 lakh crore"], 2],
+["India defeated which team in the final of the U-19 World Cup 2026?", ["Australia U-19","Pakistan U-19","South Africa U-19","England U-19"], 3],
+// 30-46 Polity & History
+["The Fundamental Duties were added to the Constitution by which Amendment?", ["42nd Amendment","44th Amendment","52nd Amendment","61st Amendment"], 0],
+["Who is known as the \"Father of the Indian Constitution\"?", ["Mahatma Gandhi","Jawaharlal Nehru","B. R. Ambedkar","Sardar Vallabhbhai Patel"], 2],
+["Which Article of the Constitution guarantees the Right to Education?", ["Article 19","Article 21A","Article 24","Article 32"], 1],
+["Who appoints the Governor of a State?", ["Prime Minister","Chief Minister","President of India","Chief Justice of India"], 2],
+["Which Schedule of the Constitution deals with the Anti-Defection Law?", ["Eighth Schedule","Ninth Schedule","Tenth Schedule","Eleventh Schedule"], 2],
+["Which Constitutional Amendment lowered the voting age from 21 years to 18 years?", ["42nd Amendment","44th Amendment","61st Amendment","73rd Amendment"], 2],
+["Which one of the following is not a Fundamental Right?", ["Right to Equality","Right against Exploitation","Right to Property","Right to Freedom of Religion"], 2],
+["Who is known as the \"Father of the Indian Renaissance\"?", ["Swami Vivekananda","Raja Ram Mohan Roy","Ishwar Chandra Vidyasagar","Dayananda Saraswati"], 1],
+["The Battle of Plassey was fought in:", ["1757","1761","1764","1857"], 0],
+["Who gave the slogan \"Give me blood, and I will give you freedom\"?", ["Mahatma Gandhi","Jawaharlal Nehru","Subhas Chandra Bose","Bhagat Singh"], 2],
+["The Revolt of 1857 started from:", ["Delhi","Kanpur","Meerut","Lucknow"], 2],
+["Who founded the Maurya Empire?", ["Ashoka","Bindusara","Chandragupta Maurya","Harsha"], 2],
+["Which Mughal emperor built the Taj Mahal?", ["Akbar","Jahangir","Shah Jahan","Aurangzeb"], 2],
+["The Quit India Movement was launched in:", ["1930","1935","1942","1947"], 2],
+["Who was the first Indian to become the Governor-General of independent India?", ["Lord Mountbatten","C. Rajagopalachari","Jawaharlal Nehru","Rajendra Prasad"], 1],
+["Which Governor-General introduced the Doctrine of Lapse?", ["Lord William Bentinck","Lord Dalhousie","Lord Curzon","Lord Canning"], 1],
+["Which Fundamental Right has been removed from the list of Fundamental Rights and made a legal right?", ["Right to Equality","Right to Freedom","Right to Constitutional Remedies","Right to Property"], 3],
+// 47-61 English Language (Part 1)
+["Choose the correctly spelt word.", ["Millenium","Millennium","Millinium","Milennium"], 1],
+["Choose the synonym of \"Eloquent\".", ["Silent","Fluent","Weak","Careless"], 1],
+["Choose the antonym of \"Generous\".", ["Kind","Selfish","Helpful","Noble"], 1],
+["Spot the error: \"Each of the boys have completed the assignment.\"", ["Each","of the boys","have completed","the assignment"], 2],
+["Fill in the blank: She insisted _____ paying the bill herself.", ["in","on","at","with"], 1],
+["Choose the correct passive voice: \"They will complete the project tomorrow.\"", ["The project will complete tomorrow.","The project will be completed tomorrow.","The project has been completed tomorrow.","The project is completed tomorrow."], 1],
+["Choose the correct indirect speech: He said, \"I am reading a novel.\"", ["He said that he is reading a novel.","He said that he was reading a novel.","He says he was reading a novel.","He said that he has been reading a novel."], 1],
+["Choose the meaning of the idiom \"A storm in a teacup\".", ["A serious disaster","Much excitement over a small matter","Heavy rainfall","A family quarrel"], 1],
+["One-word substitution: A person who studies birds.", ["Botanist","Ornithologist","Zoologist","Entomologist"], 1],
+["Fill in the blank: He is afraid _____ dogs.", ["from","with","of","at"], 2],
+["Choose the correctly punctuated sentence.", ["Therefore the meeting was postponed.","Therefore, the meeting was postponed.","Therefore the meeting, was postponed.","Therefore, the meeting, was postponed."], 1],
+["Choose the grammatically correct sentence.", ["Neither of the girls are absent.","Neither of the girls is absent.","Neither girls are absent.","Neither girl are absent."], 1],
+["Identify the figure of speech: \"Time is money.\"", ["Simile","Metaphor","Hyperbole","Irony"], 1],
+["Choose the correct article: He is _____ MLA from Assam.", ["a","an","the","no article"], 1],
+["Rearrange the words to form a meaningful sentence: always / honesty / pays / in / the / end", ["Honesty pays always in the end.","Honesty always pays in the end.","Always honesty pays the end in.","In honesty always pays the end."], 1],
+// 62-66 Reading Comprehension
+["What is the main idea of the passage?", ["Technology should replace teachers.","Education develops knowledge, values, and responsible citizens.","Books are no longer useful.","Online learning is the only effective method."], 1],
+["According to the passage, teachers help students by:", ["Conducting examinations only.","Setting positive examples.","Giving homework only.","Using technology alone."], 1],
+["Which advantage of digital technology is mentioned in the passage?", ["It reduces school hours.","It provides easy access to learning materials.","It eliminates teachers.","It replaces classroom learning completely."], 1],
+["According to the passage, excessive dependence on technology may reduce:", ["Examination results.","Face-to-face interaction.","School admissions.","Library facilities."], 1],
+["The author suggests that education should:", ["Depend only on digital learning.","Ignore classroom teaching.","Balance technology and classroom learning.","Eliminate textbooks."], 2],
+// 67-71 English Language (Part 2)
+["Choose the phrasal verb closest in meaning to \"Continue\".", ["Carry on","Give up","Put off","Bring up"], 0],
+["Choose the correct question tag: Let's begin the class, _____?", ["shall we","will we","don't we","aren't we"], 0],
+["Choose the correctly spelt plural form.", ["Syllabuses","Syllabi","Both A and B","Syllabuseses"], 2],
+["Choose the appropriate word: The Chief Guest delivered the _____ address.", ["inauguration","inaugural","inaugurate","inaugurated"], 1],
+["Choose the grammatically correct sentence.", ["The furniture are very costly.","The furniture is very costly.","Furnitures are very costly.","Furniture are very costly."], 1],
+// 72-76 Reasoning (Part 1)
+["If PENCIL is coded as QFODJM, then MARKER will be coded as:", ["NBSLFS","NBQLFS","OCTMGT","NARKES"], 0],
+["Pointing to a boy, Neha said, \"He is the son of my mother's only daughter.\" How is the boy related to Neha?", ["Brother","Son","Nephew","Cousin"], 1],
+["A person walks 9 km East, then 12 km North. What is the shortest distance from the starting point?", ["15 km","18 km","20 km","21 km"], 0],
+["In a class of 55 students, Aman ranks 21st from the top. What is his rank from the bottom?", ["34th","35th","36th","37th"], 1],
+["Find the next number in the series: 3, 8, 15, 24, 35, ?", ["46","48","50","52"], 1],
+// 77 Coded Language
+["What is the code for \"is\"?", ["ka","mi","ta","su"], 1],
+// 78-81 Reasoning (Part 2)
+["Ravi starts facing North. He turns 90° clockwise, then 180°, and finally 90° clockwise. Which direction is he facing now?", ["North","East","South","West"], 3],
+["Which one is different from the others?", ["Rose","Lotus","Lily","Wheat"], 3],
+["If all doctors are educated and all educated people are responsible, which conclusion is definitely true?", ["All responsible people are doctors.","All doctors are responsible.","Some responsible people are doctors.","No doctor is responsible."], 1],
+["If today is Thursday, what day will it be 100 days later?", ["Friday","Saturday","Sunday","Monday"], 1],
+// 82-91 Quantitative Aptitude
+["The average of 12, 18, 24, 30, and x is 22. Find the value of x.", ["22","24","26","28"], 2],
+["A train 180 m long crosses a platform 270 m long in 30 seconds. What is the speed of the train?", ["48 km/h","54 km/h","60 km/h","72 km/h"], 1],
+["A shopkeeper allows a 20% discount on an article marked at ₹2,500. What is the selling price?", ["₹1,800","₹2,000","₹2,100","₹2,250"], 1],
+["A sum of ₹8,000 is invested at 10% simple interest per annum for 3 years. Find the interest earned.", ["₹2,000","₹2,200","₹2,400","₹2,600"], 2],
+["If the ratio of boys to girls in a class is 5 : 3 and the total number of students is 40, how many girls are there?", ["12","15","18","20"], 1],
+["A man can complete a piece of work in 15 days, while another can complete it in 10 days. Working together, they will complete the work in:", ["5 days","6 days","8 days","12 days"], 1],
+["The HCF of 48 and 72 is:", ["12","18","24","36"], 2],
+["A number is increased by 20% and then decreased by 20%. The net percentage change is:", ["No change","4% increase","4% decrease","8% decrease"], 2],
+["The perimeter of a rectangle is 50 cm. If its length is 15 cm, what is its breadth?", ["8 cm","9 cm","10 cm","12 cm"], 2],
+["A sum becomes ₹4,840 at 10% simple interest in 4 years. What is the principal?", ["₹3,200","₹3,400","₹3,460","₹3,600"], 2],
+// 92-101 Teaching Ethics & Aptitude
+["A teacher treats all students equally regardless of their background. This reflects which ethical principle?", ["Bias","Fairness and Equality","Favouritism","Discrimination"], 1],
+["A teacher admits a mistake made during a lesson and corrects it the next day. Which ethical value is demonstrated?", ["Arrogance","Honesty and Integrity","Negligence","Partiality"], 1],
+["The ethical principle of \"Integrity\" means:", ["Hiding mistakes from others","Acting honestly and consistently according to moral values.","Supporting only favourite students","Avoiding responsibility"], 1],
+["The ethical principle of \"Accountability\" means:", ["Blaming others for mistakes","Taking responsibility for one's actions and decisions.","Avoiding classroom responsibilities","Depending only on school authorities"], 1],
+["An ethical teacher must avoid:", ["Treating all students equally","Showing favouritism towards selected students.","Encouraging classroom discussion","Continuous professional development"], 1],
+["A teacher finds that only a few students participate in classroom discussions. What should the teacher do?", ["Continue teaching without interruption.","Encourage all students by using interactive activities and open-ended questions.","Ask only the active students to answer.","Conduct a surprise test."], 1],
+["The primary objective of teaching is to:", ["Complete the syllabus as quickly as possible.","Prepare students only for examinations.","Facilitate meaningful learning and overall development.","Maintain strict classroom discipline."], 2],
+["A teacher notices that students have different learning styles. The most appropriate teaching strategy is to:", ["Use the same method for every student.","Adapt teaching methods to meet diverse learning needs.","Teach only high-achieving students.","Focus only on textbook reading."], 1],
+["While explaining a concept, a teacher encourages students to ask questions, discuss ideas, and justify their answers. This mainly develops:", ["Rote memorization.","Critical thinking and active learning.","Mechanical learning.","Teacher dependence."], 1],
+["If students are unable to understand a lesson even after explanation, the teacher should:", ["Scold the students for not paying attention.","Repeat the same explanation without changes.","Use a different teaching strategy with suitable examples and teaching aids.","Skip the topic and continue with the next chapter."], 2]
+];
+
+const answers = new Array(Q.length).fill(null);
+let startTime = Date.now();
+let timerInterval = null;
+let submitted = false;
+
+function letter(i){ return String.fromCharCode(65+i); }
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function renderQuiz(){
+  const mount = document.getElementById('quizMount');
+  mount.innerHTML = '';
+  sections.forEach(sec => {
+    for(let i=sec.start; i<sec.start+sec.count; i++){
+      if(sec.passageText){
+        const p = document.createElement('div');
+        p.className = 'passage-box';
+        p.innerHTML = sec.passageText.replace(/\n/g, '<br>');
+        mount.appendChild(p);
+      }
+
+      const item = Q[i];
+      if(!item) continue;
+      const card = document.createElement('div');
+      card.className = 'qcard';
+      card.id = 'qcard-' + i;
+
+      const num = document.createElement('div');
+      num.className = 'qnum';
+      num.textContent = 'Question ' + (i+1) + ' of ' + Q.length;
+      card.appendChild(num);
+
+      const qt = document.createElement('div');
+      qt.className = 'qtext';
+      qt.textContent = item[0];
+      card.appendChild(qt);
+
+      const opts = document.createElement('div');
+      opts.className = 'options';
+      item[1].forEach((optText, oi) => {
+        const label = document.createElement('label');
+        label.className = 'option';
+        label.id = `opt-${i}-${oi}`;
+        label.innerHTML = `<input type="radio" name="q${i}" value="${oi}"> <span>${letter(oi)}) ${optText}</span>`;
+        label.querySelector('input').addEventListener('change', () => {
+          answers[i] = oi;
+          updateOptionStyles(i);
+          updateProgress();
+        });
+        opts.appendChild(label);
+      });
+      card.appendChild(opts);
+      mount.appendChild(card);
+    }
+  });
+}
+
+function updateOptionStyles(i){
+  const item = Q[i];
+  item[1].forEach((_, oi) => {
+    const el = document.getElementById(`opt-${i}-${oi}`);
+    el.classList.toggle('selected', answers[i] === oi);
+  });
+}
+
+function updateProgress(){
+  const answered = answers.filter(a => a !== null).length;
+  document.getElementById('progressFill').style.width = (answered/Q.length*100) + '%';
+  document.getElementById('progressLabel').textContent = `${answered} of ${Q.length} answered`;
+}
+
+const DURATION_SECONDS = 2 * 60 * 60; // 2 hour test duration
+
+function startTimer(){
+  const timerEl = document.getElementById('timer');
+  timerInterval = setInterval(() => {
+    if(submitted) return;
+    const elapsed = Math.floor((Date.now()-startTime)/1000);
+    const remaining = DURATION_SECONDS - elapsed;
+    if(remaining <= 0){
+      timerEl.textContent = '00:00:00';
+      gradeAndShow(true);
+      return;
+    }
+    const h = String(Math.floor(remaining/3600)).padStart(2,'0');
+    const m = String(Math.floor((remaining%3600)/60)).padStart(2,'0');
+    const s = String(remaining%60).padStart(2,'0');
+    timerEl.textContent = `${h}:${m}:${s}`;
+    if(remaining <= 300){
+      timerEl.style.background = 'var(--wrong)';
+      timerEl.style.color = '#fff';
+    }
+  }, 1000);
+}
+
+function gradeAndShow(timeExpired){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  let correct=0, wrong=0, skipped=0;
+
+  Q.forEach((item, i) => {
+    const userAns = answers[i];
+    const correctIdx = item[2];
+    item[1].forEach((_, oi) => {
+      const el = document.getElementById(`opt-${i}-${oi}`);
+      el.style.pointerEvents = 'none';
+      const input = el.querySelector('input');
+      input.disabled = true;
+      if(oi === correctIdx) el.classList.add('correct-answer');
+    });
+    if(userAns === null){
+      skipped++;
+      const card = document.getElementById('qcard-'+i);
+      const flag = document.createElement('div');
+      flag.className = 'unanswered-flag';
+      flag.textContent = 'Not answered';
+      card.appendChild(flag);
+    } else if(userAns === correctIdx){
+      correct++;
+      const el = document.getElementById(`opt-${i}-${userAns}`);
+      const badge = document.createElement('span');
+      badge.className = 'badge correct';
+      badge.textContent = 'Correct';
+      el.querySelector('span').appendChild(badge);
+    } else {
+      wrong++;
+      const el = document.getElementById(`opt-${i}-${userAns}`);
+      el.classList.add('wrong-answer');
+      const badge = document.createElement('span');
+      badge.className = 'badge wrong';
+      badge.textContent = 'Your answer';
+      el.querySelector('span').appendChild(badge);
+    }
+  });
+
+  const total = Q.length;
+  const maxMarks = total * 4;
+  const obtainedMarks = (correct * 4) - (wrong * 1);
+  const pct = Math.max(0, Math.round((obtainedMarks/maxMarks)*100));
+  let verdict, verdictSub;
+  if(pct >= 85){ verdict = "Excellent — exam ready"; verdictSub = "Your fundamentals across sections are strong. Focus on speed now."; }
+  else if(pct >= 65){ verdict = "Good effort"; verdictSub = "Solid grasp overall — revisit the sections where you lost marks."; }
+  else if(pct >= 45){ verdict = "Needs more practice"; verdictSub = "You're on the right track. Revise weaker sections and retake this test."; }
+  else { verdict = "Keep practising"; verdictSub = "Go through the explanations below and revisit core policy, GK, and reasoning topics."; }
+
+  const elapsed = Math.floor((Date.now()-startTime)/1000);
+  const m = Math.floor(elapsed/60), s = elapsed%60;
+
+  const panel = document.createElement('div');
+  panel.className = 'results-panel';
+  panel.style.setProperty('--pct', pct);
+  const nameVal = escapeHtml((document.getElementById('studentName').value || '').trim());
+  panel.innerHTML = `
+    ${nameVal ? `<div class="result-name">Result for: ${nameVal}</div>` : ''}
+    <div class="score-ring"><div class="score-inner"><div class="num">${obtainedMarks}</div><div class="den">out of ${maxMarks}</div></div></div>
+    <div class="verdict">${verdict}</div>
+    <div class="verdict-sub">${verdictSub}</div>
+    <div class="stat-row">
+      <div class="stat correct"><div class="n">${correct}</div><div class="l">Correct (+${correct*4})</div></div>
+      <div class="stat wrong"><div class="n">${wrong}</div><div class="l">Incorrect (−${wrong})</div></div>
+      <div class="stat skipped"><div class="n">${skipped}</div><div class="l">Skipped (0)</div></div>
+      <div class="stat"><div class="n">${m}m ${s}s</div><div class="l">Time Taken</div></div>
+    </div>
+    <div class="jump-note">Marking scheme: +4 for each correct answer, −1 for each incorrect answer, 0 for skipped questions.</div>
+    ${timeExpired ? '<div class="jump-note" style="color:var(--wrong);font-weight:700;">Time\'s up — your test was submitted automatically.</div>' : ''}
+    <div class="jump-note">Scroll down to review every question — correct answers are marked in green, your incorrect picks in red.</div>
+  `;
+  document.getElementById('resultsMount').innerHTML = '';
+  document.getElementById('resultsMount').appendChild(panel);
+  panel.scrollIntoView({behavior:'smooth'});
+
+  document.getElementById('submitBtn').textContent = timeExpired ? 'Time Up — Test Submitted' : 'Test Submitted';
+  document.getElementById('submitBtn').disabled = true;
+}
+
+document.getElementById('submitBtn').addEventListener('click', () => {
+  if(submitted) return;
+  gradeAndShow();
+});
+
+renderQuiz();
+updateProgress();
+startTimer();
+</script>
+</body>
+</html>
